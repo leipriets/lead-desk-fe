@@ -1,1 +1,168 @@
-<p>login works!</p>
+<!-- ===== Page Wrapper Start ===== -->
+<div class="relative p-6 bg-white z-1 dark:bg-gray-900 sm:p-0">
+  <div
+    class="relative flex flex-col justify-center w-full h-screen dark:bg-gray-900 sm:p-0 lg:flex-row"
+  >
+    <!-- Form -->
+    <div class="flex flex-col flex-1 w-full lg:w-1/2">
+      <div class="w-full max-w-md pt-10 mx-auto">
+        <p
+          class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+        >
+          Lead Desk - CRM
+        </p>
+      </div>
+
+      <div class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
+        <div>
+          <div class="mb-2 sm:mb-8">
+            <h1
+              class="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md"
+            >
+              Sign In
+            </h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              Enter your email and password to sign in!
+            </p>
+          </div>
+          <div>
+            <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+              <div class="space-y-5">
+                <!-- Email -->
+                <div>
+                  <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                    Email<span class="text-error-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="email"
+                    fluid
+                    [invalid]="emailInput?.invalid && emailInput?.touched"
+                  />
+                  @if (
+                    emailInput?.errors?.['email'] && (emailInput?.invalid || emailInput?.touched)
+                  ) {
+                    <p-message severity="error" variant="simple" size="small"
+                      >Invalid email format</p-message
+                    >
+                  }
+
+                  @if (
+                    emailInput?.errors?.['required'] && (emailInput?.invalid || emailInput?.touched)
+                  ) {
+                    <p-message severity="error" variant="simple" size="small"
+                      >Email is required</p-message
+                    >
+                  }
+                </div>
+                <!-- Password -->
+                <div>
+                  <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                    Password<span class="text-error-500">*</span>
+                  </label>
+                  <div>
+                    <p-password
+                      formControlName="password"
+                      [toggleMask]="true"
+                      [feedback]="false"
+                      autocomplete="off"
+                      [invalid]="passwordInput?.invalid && passwordInput?.touched"
+                      fluid
+                    />
+                    @if (
+                      passwordInput?.errors?.['required'] &&
+                      passwordInput?.invalid &&
+                      passwordInput?.touched
+                    ) {
+                      <p-message severity="error" variant="simple" size="small"
+                        >Password is required</p-message
+                      >
+                    }
+
+                    @if (
+                      passwordInput?.errors?.['minlength'] &&
+                      passwordInput?.invalid &&
+                      passwordInput?.touched
+                    ) {
+                      <p-message severity="error" variant="simple" size="small"
+                        >Password must be at least 6 characters</p-message
+                      >
+                    }
+                  </div>
+                </div>
+                <!-- Checkbox -->
+                <div class="flex items-center justify-between">
+                  <div x-data="{ checkboxToggle: false }">
+                    <label
+                      for="checkboxLabelOne"
+                      class="flex items-center text-sm font-normal text-gray-700 cursor-pointer select-none dark:text-gray-400"
+                    >
+                      <div class="relative">
+                        <p-checkbox [binary]="true" />
+                      </div>
+                      &nbsp; Keep me logged in
+                    </label>
+                  </div>
+                  <!-- <a
+                    href="/reset-password.html"
+                    class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                    >Forgot password?</a
+                  > -->
+                </div>
+                <!-- Button -->
+                <div class="flex items-center gap-3">
+                  <!-- <button
+                    class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                    [loading]="loading()"
+                    >
+                    Sign In
+                  </button> -->
+                  <button
+                    pButton
+                    type="submit"
+                    label="Sign In"
+                    [loading]="loading()"
+                    [disabled]="loading()"
+                    class="w-full"
+                  ></button>
+                  <!-- <p-button label="Sign In" [loading]="loading()" /> -->
+                </div>
+              </div>
+            </form>
+            <!-- <div class="mt-5">
+              <p
+                class="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start"
+              >
+                Don't have an account?
+                <a
+                  href="/signup.html"
+                  class="text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                  >Sign Up</a
+                >
+              </p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="relative items-center hidden w-full h-full bg-brand-950 dark:bg-white/5 lg:grid lg:w-1/2"
+    >
+      <div class="flex items-center justify-center z-1">
+        <!-- ===== Common Grid Shape Start ===== -->
+        <!-- <include src="./partials/common-grid-shape.html"></include> -->
+        <div class="flex flex-col items-center max-w-xs">
+          <a href="index.html" class="block mb-4">
+            <img src="./images/logo/auth-logo.svg" alt="Logo" />
+          </a>
+          <p class="text-center text-gray-400 dark:text-white/60">
+            Free and Open-Source Tailwind CSS Admin Dashboard Template
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== Page Wrapper End ===== -->

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --configuration=local",
     "build": "ng build --ignoreDeprecations unknown",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,6 +19,7 @@
     "@angular/router": "^21.2.0",
     "@primeuix/themes": "^2.0.3",
     "bootstrap": "^5.3.8",
+    "primeicons": "^7.0.0",
     "primeng": "^21.1.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
