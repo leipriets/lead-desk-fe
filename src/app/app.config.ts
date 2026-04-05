@@ -7,7 +7,6 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './library/services/auth.interceptor';
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withInterceptors([authInterceptor])),
@@ -17,7 +16,9 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Aura,
       },
+      ripple: true,
+      inputStyle: 'outlined',
     }),
-    MessageService
+    MessageService,
   ],
 };

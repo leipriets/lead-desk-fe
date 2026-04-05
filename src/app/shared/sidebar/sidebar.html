@@ -1,0 +1,46 @@
+<aside
+  class="sidebar fixed left-0 top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white px-5 duration-300 ease-linear dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0"
+  (click)="sidebarToggle = false"
+>
+  <!-- SIDEBAR HEADER -->
+  <div
+    :class="sidebarToggle ? 'justify-center' : 'justify-between'"
+    class="sidebar-header flex items-center gap-2 pb-7 pt-8"
+  >
+    <a href="index.html">
+      <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
+        <img class="dark:hidden" src="./images/logo/logo.svg" alt="Logo" />
+        <img class="hidden dark:block" src="./images/logo/logo-dark.svg" alt="Logo" />
+      </span>
+    </a>
+  </div>
+  <!-- SIDEBAR HEADER -->
+
+  <div class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
+    <!-- Sidebar Menu -->
+    <nav>
+      <!-- Menu Group -->
+      <div>
+        <ul class="flex flex-col gap-4 mb-6">
+          <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
+            <span class="menu-group-title"> MENU </span>
+          </h3>
+
+          <!-- Menu Item Dashboard -->
+          <li>
+            <a
+              routerLink="/dashboard"
+              routerLinkActive="menu-item-active"
+              class="menu-item group"
+            >
+              <i class="pi pi-home"></i>
+              <span class="menu-item-text"> Dashboard </span>
+            </a>
+          </li>
+          <!-- Menu Item Dashboard -->
+        </ul>
+      </div>
+    </nav>
+    <!-- Sidebar Menu -->
+  </div>
+</aside>
