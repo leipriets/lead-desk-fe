@@ -1,26 +1,30 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from './features/dashboard/dashboard';
+import { MainLayout } from './layouts/main-layout/main-layout';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/login',
-    pathMatch: 'full'
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
     path: 'auth',
-    loadChildren: () => import('./features/auth/auth.routes')
-      .then(m => m.AUTH_ROUTES)
+    loadChildren: () => import('./features/auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
   {
-    path: 'dashboard',
-    component: Dashboard
+    path: '',
+    component: MainLayout,
+    children: [
+      {
+        path: 'dashboard',
+        loadComponent: () => import('./features/dashboard/dashboard').then((m) => m.Dashboard),
+      },
+    ],
   },
 
   // fallback
   {
     path: '**',
-    redirectTo: 'auth/login'
+    redirectTo: 'auth/login',
   },
-
 ];
